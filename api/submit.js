@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const dotenv = require('dotenv');
 const cors = require('cors'); // Importing CORS
-const Student = require('../models/Student');
+const Student = require('./models/Student'); // Adjust the path as needed
 
 dotenv.config();
 
@@ -54,11 +54,5 @@ app.post('/api/submit', upload.single('image'), async (req, res) => {
     }
 });
 
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running  ${PORT}`);
-});
-
-// Vercel deployment requirement
+// Export the serverless function
 module.exports = app;
