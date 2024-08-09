@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 });
 
 // Endpoint to handle form submission
-app.post('/api/submit', upload.single('image'), async (req, res) => {
+app.post('/formSubmit', upload.single('image'), async (req, res) => {
     const {
         name, age, subject, dob, class: studentClass, bloodGroup, religion, caste,
         dalitChristian, fatherName, parentOccupation, parentAddress, parentMobileNo,
