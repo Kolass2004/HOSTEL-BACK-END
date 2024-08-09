@@ -54,6 +54,17 @@ app.post('/formSubmit', upload.single('image'), async (req, res) => {
     }
 });
 
+// Endpoint to get all student documents
+app.get('/studentData', async (req, res) => {
+    try {
+        const students = await Student.find(); // Retrieve all student documents
+        res.json(students); // Send the documents as JSON response
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Error fetching student data');
+    }
+});
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
