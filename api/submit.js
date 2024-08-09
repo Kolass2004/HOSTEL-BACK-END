@@ -54,10 +54,10 @@ app.post('/api/submit', upload.single('image'), async (req, res) => {
     }
 });
 
-// Start the server and display the port number in the console
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running  ${PORT}`);
 });
 
 // Vercel deployment requirement
