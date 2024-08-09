@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
       {
-        "src": "submit.js",
+        "src": "api/submit.js",
         "use": "@vercel/node"
       }
     ],
