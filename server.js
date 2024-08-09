@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const multer = require('multer');
 const dotenv = require('dotenv');
-const cors = require('cors'); // Importing CORS
+const cors = require('cors');
 const Student = require('./models/Student');
 
 dotenv.config();
@@ -65,6 +65,22 @@ app.get('/studentData', async (req, res) => {
     }
 });
 
+// New DELETE endpoint to delete a student document by ID
+app.delete('/delete', async (req, res) => {
+    const { id } = req.body; // Get the ID from the request body
+
+    try {
+        const result = await Student.findByIdAndDelete(id); // Delete the document by ID
+        if (result) {
+            res.send(`Student with ID ${id} deleted successfully!`);
+        } else {
+            res.status(404).send(`No student found with ID ${id}`);
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Error deleting student data');
+    }
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
